@@ -3,18 +3,23 @@ import { Row, Col } from 'antd';
 
 import Footer from './components/Footer';
 import Header from './components/Header';
+import NavLeft from './components/NavLeft';
+
+import './style/common.less';
 
 
 export default class Root extends React.PureComponent {
   render() {
     return (
-      <Row>
-        <Col span='3'>left</Col>
-        <Col span='21'>
+      <Row className='container'>
+        <Col span='3' className='nav-left'>
+          <NavLeft/>
+        </Col>
+        <Col span='21' className='main'>
           <Header>
             Header
           </Header>
-          <Row>
+          <Row className='content'>
             Contain
           </Row>
           <Footer>
