@@ -189,7 +189,7 @@ module.exports = {
                 options: {
                   modules: false,
                   modifyVars: {
-                      "@primary-color": "#f9c700" // antd自定义主题
+                      "@primary-color": "#6495ED" // antd自定义主题
                   }
                 }
               }
