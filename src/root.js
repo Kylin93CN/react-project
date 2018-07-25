@@ -16,9 +16,7 @@ export default class Root extends React.PureComponent {
           <NavLeft/>
         </Col>
         <Col span='21' className='main'>
-          <Header>
-            Header
-          </Header>
+          <Header/>
           <Row className='content'>
             Contain
           </Row>
