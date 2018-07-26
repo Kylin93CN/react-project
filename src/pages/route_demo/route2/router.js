@@ -1,7 +1,7 @@
 import React from 'react';
 import { HashRouter, Route } from 'react-router-dom';
 
-import Main from '../route1/Main';
+import Main from './Main';
 import About from '../route1/About';
 import Topics from '../route1/Topics';
 
@@ -13,7 +13,11 @@ export default class MyRouter extends React.Component {
     return(
       <HashRouter>
         <Home>
-          <Route path='/' exact component={Main}></Route>
+          <Route path='/main' render={()=>
+            <Main>
+              <Route path='/main/a' component={About}></Route>
+            </Main>
+          }></Route>
           <Route path='/about' component={About}></Route>
           <Route path='/topics' component={Topics}></Route>
         </Home>
