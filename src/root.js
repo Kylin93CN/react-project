@@ -5,6 +5,8 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import NavLeft from './components/NavLeft';
 
+import Home from './pages/home';
+
 import './style/common.less';
 
 
@@ -18,11 +20,9 @@ export default class Root extends React.PureComponent {
         <Col span='21' className='main'>
           <Header/>
           <Row className='content'>
-            Contain
+            <Home/>
           </Row>
-          <Footer>
-            Footer
-          </Footer>
+          <Footer/>
         </Col>
       </Row>
     );
