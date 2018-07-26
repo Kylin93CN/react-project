@@ -15,7 +15,6 @@ export default class NavLeft extends React.PureComponent {
 
   componentWillMount() {
     const dataList = this._renderMenu(menuConfig);
-    console.log(dataList);
     this.setState({
       menuList: dataList,
     });

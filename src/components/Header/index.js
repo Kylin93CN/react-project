@@ -2,6 +2,7 @@ import React from 'react';
 import { Row, Col } from 'antd';
 
 import Utils from '../../utils/utils';
+import axios from '../../axios';
 
 import './index.less';
 
@@ -11,7 +12,8 @@ export default class Header extends React.PureComponent {
     this.state = {
       userName: 'Kylin',
       sysTime: '',
-      weatherDetail: 'xxx',
+      weatherDetail: '',
+      dayPictureUrl: '',
     }
   }
 
@@ -22,6 +24,23 @@ export default class Header extends React.PureComponent {
         sysTime,
       });
     },0);
+
+    this._getWeatherApiData();
+  }
+
+  _getWeatherApiData = () => {
+    const city = 'hangzhou';
+    axios.jsonp({
+      url: `http://api.map.baidu.com/telematics/v3/weather?location=${city}&output=json&ak=3p49MVra6urFRGOT9s8UBWr2`
+    }).then((res) => {
+      if(res.status === 'success') {
+        let data = res.results[0].weather_data[0];
+        this.setState({
+            dayPictureUrl:data.dayPictureUrl,
+            weatherDetail:data.weather
+        })
+      }
+    })
   }
 
   render() {
@@ -39,6 +58,9 @@ export default class Header extends React.PureComponent {
           </Col>
           <Col span='20' className='weather'>
             <span className='date'>{this.state.sysTime}</span>
+            <span className="weatherImg">
+              <img src={this.state.dayPictureUrl} alt="" />
+            </span>
             <span className='weatherDetail'>{this.state.weatherDetail}</span>
           </Col>
         </Row>
